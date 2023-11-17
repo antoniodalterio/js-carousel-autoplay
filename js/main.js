@@ -52,7 +52,7 @@ next.addEventListener('click', function () {
 
 // funzione evento al click della freccia next
 
-prev.addEventListener('click', function () {
+function myFun() {
   if (currentItem > 0) {
     allItem[currentItem].classList.remove('active');
 
@@ -65,4 +65,6 @@ prev.addEventListener('click', function () {
     currentItem = 4;
     allItem[currentItem].classList.add('active');
   }
-});
+}
+
+let interval = setInterval(myFun, 2_000);
