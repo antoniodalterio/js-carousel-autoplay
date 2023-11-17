@@ -11,6 +11,8 @@ const images = [
 const items = document.querySelector('.items');
 const prev = document.querySelector('.prev');
 const next = document.querySelector('.next');
+const play = document.getElementById('play');
+const stop = document.getElementById('stop');
 let currentItem = 0;
 
 // Ciclo for conteggio = larghezza Array(images)
@@ -36,23 +38,19 @@ const allItem = document.querySelectorAll('.item');
 
 // funzione evento al click della freccia next
 
-next.addEventListener('click', function () {
-  if (currentItem < allItem.length - 1) {
-    allItem[currentItem].classList.remove('active');
+let myIntervall;
 
-    currentItem++;
-    allItem[currentItem].classList.add('active');
-  } else if (currentItem === 4) {
-    allItem[currentItem].classList.remove('active');
-
-    currentItem = 0;
-    allItem[currentItem].classList.add('active');
-  }
+play.addEventListener('click', function () {
+  myIntervall = setInterval(myFun, 1_500);
+  return myIntervall;
+});
+stop.addEventListener('click', function () {
+  clearInterval(myIntervall);
 });
 
 // funzione evento al click della freccia next
 
-function myFun() {
+prev.addEventListener('click', function () {
   if (currentItem > 0) {
     allItem[currentItem].classList.remove('active');
 
@@ -65,6 +63,18 @@ function myFun() {
     currentItem = 4;
     allItem[currentItem].classList.add('active');
   }
-}
+});
 
-let interval = setInterval(myFun, 2_000);
+function myFun() {
+  if (currentItem < allItem.length - 1) {
+    allItem[currentItem].classList.remove('active');
+
+    currentItem++;
+    allItem[currentItem].classList.add('active');
+  } else if (currentItem === 4) {
+    allItem[currentItem].classList.remove('active');
+
+    currentItem = 0;
+    allItem[currentItem].classList.add('active');
+  }
+}

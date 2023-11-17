@@ -16,6 +16,32 @@
   position: relative;
   width: 700px;
   height: 300px;
+  display: flex;
+}
+
+.items:hover {
+  filter: brightness(0.5);
+}
+
+.player {
+  position: absolute;
+  display: none;
+  left: 50%;
+  align-self: center;
+  transform: translate(-50%);
+}
+#play,
+#stop {
+  display: inline-block;
+  font-size: 50px;
+  color: rgb(255, 255, 255);
+  margin-left: 10px;
+}
+
+.items:hover .player {
+  cursor: pointer;
+  display: inline-block;
+  z-index: 99;
 }
 
 .item {
